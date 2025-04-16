@@ -1,9 +1,10 @@
 from typing import Optional
+from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.blockchain.dao import TronAccountInfoDAO
-from src.blockchain.schemas import TronAccountInfoCreate, TronAccountInfoDB, ResourcesSchema
-from src.blockchain.client import tron_client
+from src.tron.dao import TronAccountInfoDAO
+from src.tron.schemas import TronAccountInfoCreate, TronAccountInfoDB, ResourcesSchema
+from src.tron.client import tron_client
 from src.exceptions.BlockchainException import AddressNotFoundException
 
 class TronAccountInfoService:

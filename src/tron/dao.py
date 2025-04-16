@@ -1,6 +1,8 @@
 from sqlalchemy import desc, select
-from src.blockchain.schemas import TronAccountInfoCreate, TronAccountInfoUpdate
-from src.blockchain.model import TronAccountInfoModel
+from fastapi import HTTPException, status
+
+from src.tron.schemas import TronAccountInfoCreate, TronAccountInfoUpdate
+from src.tron.model import TronAccountInfoModel
 from src.base_dao import BaseDAO
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -17,6 +19,12 @@ class TronAccountInfoDAO(BaseDAO[TronAccountInfoModel, TronAccountInfoCreate, Tr
         limit: int = 100,
         **filter_by
     ):
+        if offset < 0 or limit <= 0:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Offset must be >= 0 and limit must be > 0"
+            )
+        
         stmt = (
             select(cls.model)
             .filter(*filters)

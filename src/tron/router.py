@@ -4,9 +4,8 @@ from fastapi import APIRouter, Depends, status
 from requests import session
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.blockchain.client import tron_client
-from src.blockchain.schemas import TronAccountInfoDB
-from src.blockchain.service import TronAccountInfoService
+from src.tron.schemas import TronAccountInfoDB
+from src.tron.service import TronAccountInfoService
 from src.core.db_helper import db
 
 

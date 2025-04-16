@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from src.blockchain.router import router as router_blockchain
+from src.tron.router import router as router_blockchain
 
 
 app = FastAPI(

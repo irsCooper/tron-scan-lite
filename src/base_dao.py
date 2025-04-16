@@ -1,4 +1,5 @@
 from typing import Any, Dict, Generic, Optional, TypeVar, Union
+from fastapi import HTTPException, status
 from pydantic import BaseModel
 
 from sqlalchemy import delete, func, insert, select, update
@@ -110,6 +111,12 @@ class BaseDAO(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         limit: int = 100,
         **filter_by
     ):
+        if offset < 0 or limit <= 0:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Offset must be >= 0 and limit must be > 0"
+            )
+        
         stmt = (
             select(cls.model)
             .filter(*filters)

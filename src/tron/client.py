@@ -1,7 +1,7 @@
 from typing import Optional
 from tronpy import AsyncTron
 
-from src.blockchain.schemas import BandwidthSchema, EnergySchema, ResourcesSchema
+from src.tron.schemas import BandwidthSchema, EnergySchema, ResourcesSchema
 
 class TronClient:
     def __init__(self, network: str = "shasta"):
