@@ -1,3 +1,5 @@
+from datetime import datetime
+import uuid
 from pydantic import BaseModel
 
 
@@ -32,3 +34,8 @@ class TronAccountInfoCreate(TronAccountInfoSchema):
 
 class TronAccountInfoUpdate(BaseModel):
     pass
+
+
+class TronAccountInfoDB(TronAccountInfoSchema):
+    id: uuid.UUID
+    creates_at: datetime
