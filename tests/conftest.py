@@ -1,26 +1,3 @@
-# import pytest_asyncio
-# from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
-# from src.base_model import BaseModel  
-# from src.core.config import settings
-
-# DATABASE_URL = settings.db_url
-
-# engine_test = create_async_engine(DATABASE_URL, echo=True)
-# TestSessionLocal = async_sessionmaker(engine_test, expire_on_commit=False)
-
-# @pytest_asyncio.fixture(scope="session", autouse=True)
-# async def prepare_database():
-#     async with engine_test.begin() as conn:
-#         await conn.run_sync(BaseModel.metadata.create_all)
-#     yield
-#     async with engine_test.begin() as conn:
-#         await conn.run_sync(BaseModel.metadata.drop_all)
-
-# @pytest_asyncio.fixture()
-# async def test_session() -> AsyncSession:
-#     async with TestSessionLocal() as session:
-#         yield session
-
 import asyncio
 import uuid
 from typing import AsyncGenerator

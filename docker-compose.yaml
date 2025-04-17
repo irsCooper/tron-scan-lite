@@ -13,6 +13,19 @@ services:
     networks:
       - work
 
+  tron_service:
+    build:
+      context: .
+    container_name: tron_service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+    env_file:
+      - ./.env
+    networks:
+      - work
+
 networks:
   work:
     driver: bridge
