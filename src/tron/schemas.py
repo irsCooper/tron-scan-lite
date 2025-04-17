@@ -1,19 +1,20 @@
 from datetime import datetime
+from typing import Optional
 import uuid
 from pydantic import BaseModel
 
 
 class BandwidthSchema(BaseModel):
-    freeNetUsed: int
-    freeNetLimit: int
-    TotalNetLimit: int
-    TotalNetWeight: int
+    freeNetUsed: Optional[int] = None
+    freeNetLimit: Optional[int] = None
+    TotalNetLimit: Optional[int] = None
+    TotalNetWeight: Optional[int] = None
 
 
 class EnergySchema(BaseModel):
-    EnergyLimit: int
-    TotalEnergyLimit: int
-    TotalEnergyWeight: int
+    EnergyLimit: Optional[int] = None
+    TotalEnergyLimit: Optional[int] = None
+    TotalEnergyWeight: Optional[int] = None
 
 
 class ResourcesSchema(BaseModel):
