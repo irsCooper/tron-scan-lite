@@ -18,13 +18,7 @@ class TronAccountInfoDAO(BaseDAO[TronAccountInfoModel, TronAccountInfoCreate, Tr
         offset: int = 0,
         limit: int = 100,
         **filter_by
-    ):
-        if offset < 0 or limit <= 0:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Offset must be >= 0 and limit must be > 0"
-            )
-        
+    ):  
         stmt = (
             select(cls.model)
             .filter(*filters)
